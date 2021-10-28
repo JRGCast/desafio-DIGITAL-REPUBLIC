@@ -4,7 +4,7 @@ import LandingPage from '../pages/LandingPage';
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path='/' component={ LandingPage }></Route>
+      <Route exact path='/desafio-DIGITAL-REPUBLIC' component={ LandingPage }></Route>
     </Switch>
   );
 };
