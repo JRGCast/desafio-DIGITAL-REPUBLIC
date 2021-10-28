@@ -1,5 +1,12 @@
 {
-  "name": "loja-de-tintas",
+  "homepage": "http://jrgcast.github.io/paint-store",
+  "name": "paint-store",
+  "description": "desafio Digital Republic",
+  "author": {
+    "name": "JRGCast",
+    "email": "joao.ralph1@gmail.com",
+    "url": "http://jrgcast.github.io/"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
