@@ -12,7 +12,7 @@ const LandingPage = () => {
   - 0, 5 L;
   - 2, 5 L;
   - 3, 6 L;
-  - 18 L; `.split(';').map((item, index) => <li key={ index }>{ item }</li>);
+  - 18 L; `.split(';').map((item, index) => <p key={ index }>{ item }</p>);
   return (
     <div>
       <h1>Regras de negócio</h1>
