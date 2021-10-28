@@ -1,3 +1,5 @@
+import WallsInputs from "../components/WallsInputs";
+
 const LandingPage = () => {
   const giantString = `1. Nenhuma parede pode ter menos de 1 metro nem mais de 15 metros, mas podem possuir alturas e larguras diferentes;
   2. O total de área das portas e janelas deve ser no máximo 50 % da área de parede;
@@ -10,10 +12,11 @@ const LandingPage = () => {
   - 0, 5 L;
   - 2, 5 L;
   - 3, 6 L;
-  - 18 L; `.split(';').map(item => <li>{ item }</li>);
+  - 18 L; `.split(';').map((item, index) => <li key={ index }>{ item }</li>);
   return (
     <div>
       <h1>Regras de negócio</h1>
+      <WallsInputs quantityOfWalls={ 4 } />
       <ul>{ giantString }</ul>
     </div>);
 };
