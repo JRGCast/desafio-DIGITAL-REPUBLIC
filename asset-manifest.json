@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css",
-    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.d17340a0.chunk.js",
-    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.d17340a0.chunk.js.map",
-    "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.2df36a53.js",
-    "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.2df36a53.js.map",
-    "static/js/2.11263a59.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.11263a59.chunk.js",
-    "static/js/2.11263a59.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.11263a59.chunk.js.map",
-    "static/js/3.3d275273.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/3.3d275273.chunk.js",
-    "static/js/3.3d275273.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/3.3d275273.chunk.js.map",
+    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.e9714874.chunk.js",
+    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.e9714874.chunk.js.map",
+    "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.36f2690a.js",
+    "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.36f2690a.js.map",
+    "static/js/2.6e195809.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js",
+    "static/js/2.6e195809.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js.map",
+    "static/js/3.f28ad16b.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/3.f28ad16b.chunk.js",
+    "static/js/3.f28ad16b.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/3.f28ad16b.chunk.js.map",
     "index.html": "/desafio-DIGITAL-REPUBLIC/index.html",
     "static/css/main.f09a1402.chunk.css.map": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css.map",
-    "static/js/2.11263a59.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.11263a59.chunk.js.LICENSE.txt"
+    "static/js/2.6e195809.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2df36a53.js",
-    "static/js/2.11263a59.chunk.js",
+    "static/js/runtime-main.36f2690a.js",
+    "static/js/2.6e195809.chunk.js",
     "static/css/main.f09a1402.chunk.css",
-    "static/js/main.d17340a0.chunk.js"
+    "static/js/main.e9714874.chunk.js"
   ]
 }
