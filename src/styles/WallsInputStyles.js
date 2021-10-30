@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     margin: '0 auto',
     padding: '0.5em',
-    width: 'fit-content',
+    width: '90%',
   },
   cardWrapper: {
     alignItems: 'center',
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputMeasures: {
-    textAlign: 'center',
+    marginLeft: '0.2em',
     width: '4em'
   },
 }));
