@@ -1,13 +1,36 @@
 .WallsInputs-main-wrapper {
- display: flex;
  align-items: center;
- justify-content: center space-between;
+ border: 5px solid blue;
+ display: grid;
  flex-flow: row wrap;
- width: 100%;
+ gap: 1em;
+ grid-template-columns: 1fr 1fr;
+ justify-content: center space-between;
+ margin: 0 auto;
+ padding: 1em;
+ width: 50%;
 }
 
 .WallsInputs-content-wrapper {
+ border: 1px solid black;
  display: flex;
  flex-flow: column wrap;
+ justify-content: space-between;
  margin: 0 auto;
+ padding: 0.5em;
+ width: min-content;
+}
+
+@media only screen and (max-width: 846px) {
+  .WallsInputs-main-wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .WallsInputs-main-wrapper {
+    gap: 0.2em;
+    padding: 0.2em;
+    width: 95%;
+  }
 }

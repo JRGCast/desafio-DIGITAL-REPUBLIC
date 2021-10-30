@@ -4,7 +4,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
   const amountOfWalls = Array(quantityOfWalls).fill(null);
   const minWallMeasures = 1;
   const maxWallMeasures = 15;
-  const theInputs = amountOfWalls.map((_wallNumber, index) => {
+  const theInputs = amountOfWalls.map((_wallAmount, index) => {
     return (
       <div className='WallsInputs-content-wrapper'>
         <div className='WallsInputs-wrapper WallsInputs-height'>
