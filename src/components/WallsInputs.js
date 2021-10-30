@@ -1,12 +1,11 @@
 import { InputLabel, TextField } from '@material-ui/core';
 import { useState } from 'react';
 import useStyles from '../styles/WallsInputStyles';
-import './WallsInputs.css';
 
 const WallsInputs = ({ quantityOfWalls }) => {
   const amountOfWalls = Array(quantityOfWalls).fill(null);
-  const height = 'height';
-  const length = 'length';
+  // const height = 'height';
+  // const length = 'length';
   const minWallMeasures = 1;
   const maxWallMeasures = 15;
   const [wallsAreas, setWallsAreas] = useState({});
@@ -18,11 +17,15 @@ const WallsInputs = ({ quantityOfWalls }) => {
     if (Number(value) >= 1 && Number(value) <= 15) {
       setWallsAreas({ ...wallsAreas, [id]: Number(value) });
       spanEl.innerText = '';
+      currWindowInput.style.backgroundColor = '#fef6e4';
       currWindowInput.disabled = false;
+      currWindowInput.placeholder = '';
     } else {
       setWallsAreas({ ...wallsAreas, [id]: '' });
       currWindowInput.disabled = true;
-      spanEl.innerText = value === '' ? 'Preencha o campo ⭕' : 'Valor incorreto ❌';
+      currWindowInput.value = '';
+      currWindowInput.placeholder = 'Block';
+      spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';
     }
   };
   const handleWindowChange = ({ target: { id, value } }) => {
@@ -30,7 +33,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
     // const [wall, number, theWindow] = id.split('-');
     // const currWallHeight = [wall, number, height].join('-');
     // const currWallLength = [wall, number, length].join('-');
-    // if (!wallsAreas[currWallHeight]) {
+    // if (wallsAreas[currWallHeight]) {
     //   inputWindow.disabled = true;
     // } else {
     //   inputWindow.disabled = false;
@@ -53,6 +56,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
           <TextField id={ `wall-${index + 1}-height` }
             className={ classes.inputMeasures }
             type='number'
+            placeholder='1-15'
             InputProps={ inputPropsWalls }
             autoFocus={ true }
             onChange={ handleWallChange }
@@ -64,6 +68,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
           <TextField id={ `wall-${index + 1}-length` }
             className={ classes.inputMeasures }
             type='number'
+            placeholder='1-15'
             InputProps={ inputPropsWalls }
             onChange={ handleWallChange }
             required /> metros
@@ -74,6 +79,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
           <TextField id={ `wall-${index + 1}-window` }
             className={ classes.inputMeasures }
             type='number'
+            placeholder='Block'
             InputProps={ inputPropsWnD }
             onChange={ handleWindowChange }
           /> janela(s)
@@ -83,6 +89,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
           <TextField id={ `wall-${index + 1}-door` }
             className={ classes.inputMeasures }
             type='number'
+            placeholder='Block'
             InputProps={ inputPropsWnD }
             onChange={ handleWindowChange }
           /> porta(s)
@@ -95,11 +102,11 @@ const WallsInputs = ({ quantityOfWalls }) => {
       <div className={ classes.imageWrapper }>
         <figure>
           <img
-            src='https://4.imimg.com/data4/NF/SF/MY-16570734/wooden-window-500x500.jpg'
+            src='https://amgestoroutput.s3.amazonaws.com/jcmateriais/img_produtos/638265-14535830_thumb.png'
             alt='janela'
             style={ {
               background: 'white',
-              border: '2px solid brown',
+              border: '2px solid grey',
               padding: '0.5em',
               width: '10em'
             } } />
