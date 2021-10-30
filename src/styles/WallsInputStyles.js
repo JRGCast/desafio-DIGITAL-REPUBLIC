@@ -39,6 +39,19 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '0.2em',
     width: '4em'
   },
+  imageWrapper: {
+    alignContent: 'center',
+    alignItems: 'center',
+    background: theme.palette.background.paper,
+    border: '3px solid #001858',
+    color: theme.palette.text.primary,
+    display: 'flex',
+    flexFlow: 'column wrap',
+    justifyContent: 'center',
+    margin: '0 auto',
+    padding: '0.5em',
+    width: '90%',
+  },
 }));
 
 export default useStyles;
