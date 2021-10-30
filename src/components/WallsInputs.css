@@ -1,0 +1,13 @@
+.WallsInputs-main-wrapper {
+ display: flex;
+ align-items: center;
+ justify-content: center space-between;
+ flex-flow: row wrap;
+ width: 100%;
+}
+
+.WallsInputs-content-wrapper {
+ display: flex;
+ flex-flow: column wrap;
+ margin: 0 auto;
+}
