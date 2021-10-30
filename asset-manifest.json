@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css",
-    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.e9714874.chunk.js",
-    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.e9714874.chunk.js.map",
-    "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.36f2690a.js",
-    "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.36f2690a.js.map",
-    "static/js/2.6e195809.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js",
-    "static/js/2.6e195809.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js.map",
-    "static/js/3.f28ad16b.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/3.f28ad16b.chunk.js",
-    "static/js/3.f28ad16b.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/3.f28ad16b.chunk.js.map",
+    "main.css": "/desafio-DIGITAL-REPUBLIC/static/css/main.faa80f4c.chunk.css",
+    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.dbe1d57e.chunk.js",
+    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.dbe1d57e.chunk.js.map",
+    "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.a60379d5.js",
+    "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.a60379d5.js.map",
+    "static/js/2.bcbdeb7b.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.bcbdeb7b.chunk.js",
+    "static/js/2.bcbdeb7b.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.bcbdeb7b.chunk.js.map",
+    "static/js/3.dd20d481.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/3.dd20d481.chunk.js",
+    "static/js/3.dd20d481.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/3.dd20d481.chunk.js.map",
     "index.html": "/desafio-DIGITAL-REPUBLIC/index.html",
-    "static/css/main.f09a1402.chunk.css.map": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css.map",
-    "static/js/2.6e195809.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.6e195809.chunk.js.LICENSE.txt"
+    "static/css/main.faa80f4c.chunk.css.map": "/desafio-DIGITAL-REPUBLIC/static/css/main.faa80f4c.chunk.css.map",
+    "static/js/2.bcbdeb7b.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.bcbdeb7b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.36f2690a.js",
-    "static/js/2.6e195809.chunk.js",
-    "static/css/main.f09a1402.chunk.css",
-    "static/js/main.e9714874.chunk.js"
+    "static/js/runtime-main.a60379d5.js",
+    "static/js/2.bcbdeb7b.chunk.js",
+    "static/css/main.faa80f4c.chunk.css",
+    "static/js/main.dbe1d57e.chunk.js"
   ]
 }
