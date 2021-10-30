@@ -16,22 +16,32 @@ const theme = createTheme({
       primary: '#001858',
       secondary: '#172c66',
     },
+    background: {
+      default: '#f3d2c1',
+      paper: '#fef6e4'
+    },
   },
-  typography: {
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
+  custom: {
+    myOwnComponent: {
+      margin: "10px 10px",
+      backgroundColor: "lightgreen"
+    },
+    typography: {
+      // Use the system font instead of the default Roboto font.
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+    },
+  }
 });
 
 export default theme;

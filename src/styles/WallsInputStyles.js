@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   mainWrapper: {
     alignItems: 'center',
     background: theme.palette.primary.light,
-    border: '5px solid blue',
+    border: `5px solid #001858`,
     display: 'grid',
     flexFlow: 'row wrap',
     gap: '1em',
@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     width: '50%',
   },
   contentWrapper: {
-    border: '1px solid black',
+    background: theme.palette.background.paper,
+    border: '1px solid #001858',
     color: theme.palette.text.primary,
     display: 'flex',
     flexFlow: 'column wrap',
