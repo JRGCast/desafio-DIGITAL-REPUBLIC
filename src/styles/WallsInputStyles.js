@@ -14,17 +14,31 @@ const useStyles = makeStyles((theme) => ({
     padding: '1em',
     width: '50%',
   },
-  contentWrapper: {
+  allContentWrapper: {
     background: theme.palette.background.paper,
-    border: '1px solid #001858',
+    border: '3px solid #001858',
     color: theme.palette.text.primary,
     display: 'flex',
     flexFlow: 'column wrap',
     justifyContent: 'space-between',
     margin: '0 auto',
     padding: '0.5em',
-    width: 'min-content',
-  }
+    width: 'fit-content',
+  },
+  cardWrapper: {
+    alignItems: 'center',
+    alignContent: 'center',
+    border: '1px solid #001858',
+    padding: '0.3em',
+    margin: '0.5em auto',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
+  },
+  inputMeasures: {
+    textAlign: 'center',
+    width: '4em'
+  },
 }));
 
 export default useStyles;
