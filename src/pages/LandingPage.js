@@ -1,4 +1,4 @@
-import WallsInputs from "../components/WallsInputs";
+import WallsCalc from "../components/WallsCalc";
 
 const LandingPage = () => {
   const giantString = `Nenhuma parede pode ter menos de 1 metro nem mais de 15 metros, mas podem possuir alturas e larguras diferentes;
@@ -16,7 +16,7 @@ const LandingPage = () => {
   return (
     <div>
       <h1>Regras de negócio</h1>
-      <WallsInputs quantityOfWalls={ 4 } />
+      <WallsCalc quantityOfWalls={ 4 } />
       <div style={ { width: '500px', textAlign: 'start', margin: '0 auto' } }>
         <ol>{ giantString }</ol>
       </div>
