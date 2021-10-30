@@ -13,10 +13,14 @@ const LandingPage = () => {
   - 2, 5 L
   - 3, 6 L
   - 18 L `.split(';').map((item, index) => <li key={ index } style={ { padding: '10px' } }>{ item }</li>);
+  const wallMeasures = { minWallMeasures: 1, maxWallMeasures: 15 };
   return (
     <div>
       <h1>Regras de negócio</h1>
-      <WallsCalc quantityOfWalls={ 4 } />
+      <WallsCalc
+        quantityOfWalls={ 4 }
+        wallMeasures={ wallMeasures }
+      />
       <div style={ { width: '500px', textAlign: 'start', margin: '0 auto' } }>
         <ol>{ giantString }</ol>
       </div>

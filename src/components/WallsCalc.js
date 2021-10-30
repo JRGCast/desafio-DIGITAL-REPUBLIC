@@ -1,9 +1,19 @@
 import { useState } from 'react';
 import useStyles from '../styles/WallsInputStyles';
+import ImgGenerator from './ImgGenerator';
 import WallsInputGenerator from './WallsInputsGenerator';
 
-const WallsCalc = ({ quantityOfWalls }) => {
-  const wallMeasures = { minWallMeasures: 1, maxWallMeasures: 15 };
+const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
+  const imgWindowObj = {
+    src: 'https://amgestoroutput.s3.amazonaws.com/jcmateriais/img_produtos/638265-14535830_thumb.png',
+    alt: 'imagem-janela',
+    textInfo: 'Medida da Janela: 2,00m (L) x 1,20m (A)'
+  };
+  const imgDoorObj = {
+    src: 'https://mobileimages.lowes.com/productimages/b0196113-822f-4b05-ab2c-4b43b30e56ef/04744195.jpg?size=pdhi',
+    alt: 'imagem-porta',
+    textInfo: 'Medida da Porta: 0,80m (L) x 1,90m (A)'
+  };
   const [wallsAreas, setWallsAreas] = useState({});
   const handleWallChange = ({ target: { id, value } }) => {
     const spanEl = document.getElementById(`${id}-span`);
@@ -40,34 +50,8 @@ const WallsCalc = ({ quantityOfWalls }) => {
   const handleFuncObjs = { handleWallChange, handleWindowChange };
   return (
     <section className={ classes.mainWrapper }>
-      <div className={ classes.imageWrapper }>
-        <figure>
-          <img
-            src='https://amgestoroutput.s3.amazonaws.com/jcmateriais/img_produtos/638265-14535830_thumb.png'
-            alt='janela'
-            style={ {
-              background: 'white',
-              border: '2px solid grey',
-              padding: '0.5em',
-              width: '10em'
-            } } />
-        </figure>
-        <p >Medida da Janela: 2,00m (L) x 1,20m (A)</p>
-      </div>
-      <div className={ classes.imageWrapper }>
-        <figure>
-          <img
-            src='https://mobileimages.lowes.com/productimages/b0196113-822f-4b05-ab2c-4b43b30e56ef/04744195.jpg?size=pdhi'
-            alt='porta'
-            style={ {
-              background: 'white',
-              border: '2px solid grey',
-              padding: '0.5em',
-              width: '10em'
-            } } />
-        </figure>
-        <p >Medida da Porta: 0,80m (L) x 1,90m (A)</p>
-      </div>
+      <ImgGenerator imgObj={ imgWindowObj } />
+      <ImgGenerator imgObj={ imgDoorObj } />
       <WallsInputGenerator
         wallCardsAmount={ quantityOfWalls }
         wallMeasures={ wallMeasures }
