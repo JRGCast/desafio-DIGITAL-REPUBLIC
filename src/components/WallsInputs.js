@@ -5,20 +5,36 @@ import './WallsInputs.css';
 
 const WallsInputs = ({ quantityOfWalls }) => {
   const amountOfWalls = Array(quantityOfWalls).fill(null);
+  const height = 'height';
+  const length = 'length';
   const minWallMeasures = 1;
   const maxWallMeasures = 15;
   const [wallsAreas, setWallsAreas] = useState({});
   const handleWallChange = ({ target: { id, value } }) => {
     const spanEl = document.getElementById(`${id}-span`);
+    const [wall, number, heightOrLength] = id.split('-');
+    const currWindowId = [wall, number, 'window'].join('-');
+    const currWindowInput = document.getElementById(currWindowId);
     if (Number(value) >= 1 && Number(value) <= 15) {
-      setWallsAreas({ ...wallsAreas, [id]: value });
+      setWallsAreas({ ...wallsAreas, [id]: Number(value) });
       spanEl.innerText = '';
+      currWindowInput.disabled = false;
     } else {
+      setWallsAreas({ ...wallsAreas, [id]: '' });
+      currWindowInput.disabled = true;
       spanEl.innerText = value === '' ? 'Preencha o campo ⭕' : 'Valor incorreto ❌';
     }
   };
-  const handleWindow = ({ target: { id, value } }) => {
-
+  const handleWindowChange = ({ target: { id, value } }) => {
+    // const inputWindow = document.getElementById(id);
+    // const [wall, number, theWindow] = id.split('-');
+    // const currWallHeight = [wall, number, height].join('-');
+    // const currWallLength = [wall, number, length].join('-');
+    // if (!wallsAreas[currWallHeight]) {
+    //   inputWindow.disabled = true;
+    // } else {
+    //   inputWindow.disabled = false;
+    // }
   };
   const inputPropsWalls = {
     inputProps: {
@@ -27,7 +43,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
       step: 0.01,
     }
   };
-  const inputPropsWnD = { min: 0 };
+  const inputPropsWnD = { inputProps: { min: 0 } };
   const classes = useStyles();
   const theInputs = amountOfWalls.map((_wallAmount, index) => {
     return (
@@ -59,7 +75,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
             className={ classes.inputMeasures }
             type='number'
             InputProps={ inputPropsWnD }
-            onChange={ handleWallChange }
+            onChange={ handleWindowChange }
           /> janela(s)
         </div>
         <div className={ classes.cardWrapper }>
@@ -68,7 +84,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
             className={ classes.inputMeasures }
             type='number'
             InputProps={ inputPropsWnD }
-            onChange={ handleWallChange }
+            onChange={ handleWindowChange }
           /> porta(s)
         </div>
       </div >
