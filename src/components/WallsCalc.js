@@ -4,6 +4,8 @@ import ImgGenerator from './ImgGenerator';
 import WallsInputGenerator from './WallsInputsGenerator';
 
 const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
+  const heightStr = 'height';
+  const lengthStr = 'length';
   const imgWindowObj = {
     src: 'https://amgestoroutput.s3.amazonaws.com/jcmateriais/img_produtos/638265-14535830_thumb.png',
     alt: 'imagem-janela',
@@ -35,10 +37,10 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     }
   };
   const handleWindowChange = ({ target: { id, value } }) => {
-    // const inputWindow = document.getElementById(id);
-    // const [wall, number, theWindow] = id.split('-');
-    // const currWallHeight = [wall, number, height].join('-');
-    // const currWallLength = [wall, number, length].join('-');
+    const inputWindow = document.getElementById(id);
+    const [wall, number, theWindowStr] = id.split('-');
+    const currWallHeight = [wall, number, heightStr].join('-');
+    const currWallLength = [wall, number, lengthStr].join('-');
     // if (wallsAreas[currWallHeight]) {
     //   inputWindow.disabled = true;
     // } else {
