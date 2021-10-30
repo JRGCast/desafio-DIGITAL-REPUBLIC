@@ -1,3 +1,4 @@
+import { Input } from '@material-ui/core';
 import './WallsInputs.css';
 
 const WallsInputs = ({ quantityOfWalls }) => {
@@ -7,6 +8,7 @@ const WallsInputs = ({ quantityOfWalls }) => {
   const theInputs = amountOfWalls.map((_wallAmount, index) => {
     return (
       <div className='WallsInputs-content-wrapper'>
+        <Input autoFocus={ true } />
         <div className='WallsInputs-wrapper WallsInputs-height'>
           <label htmlFor={ `wall-height-${index + 1}` }>Altura Parede { index + 1 }
             <input id={ `wall-height-${index + 1}` }
