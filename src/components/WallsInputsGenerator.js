@@ -4,7 +4,7 @@ import useStyles from '../styles/WallsInputStyles';
 const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) => {
   const classes = useStyles();
   const { minWallMeasures, maxWallMeasures } = wallMeasures;
-  const { handleWallChange, handleWindowChange, handleDoorChange,} = handleFuncObjs;
+  const { handleWallChange, handleWindowChange, handleDoorChange, } = handleFuncObjs;
   const { allContentWrapper, cardWrapper, inputMeasures } = classes;
   const inputPropsWalls = {
     inputProps: {
@@ -26,6 +26,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
             InputProps={ inputPropsWalls }
             autoFocus={ true }
             onChange={ handleWallChange }
+            onKeyPress={ handleWallChange }
             required /> metros
           <span id={ `wall-${index + 1}-height-span` }></span>
         </div>
