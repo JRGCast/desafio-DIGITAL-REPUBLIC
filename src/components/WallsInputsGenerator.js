@@ -13,7 +13,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
       step: 0.01,
     }
   };
-  const inputPropsWnD = { inputProps: { min: 0 } };
+  const inputPropsWnD = { inputProps: { min: 0, max: 0 } };
   const theInputs = Array(wallCardsAmount).fill('').map((_amount, index) => {
     return (
       <div key={ `all-content-wrapper-${index}` } className={ allContentWrapper }>
