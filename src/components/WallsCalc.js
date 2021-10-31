@@ -17,6 +17,9 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     textInfo: 'Medida da Porta: 0,80m (L) x 1,90m (A)'
   };
   const [wallsAreas, setWallsAreas] = useState({});
+  const verifyHeigthNLength = (currWHeight, currWLength) => {
+    if (wallsAreas) console.log('parei aqui');
+  };
   const handleWallChange = ({ target: { id, value } }) => {
     const spanEl = document.getElementById(`${id}-span`);
     const [wall, number, heightOrLength] = id.split('-');
@@ -24,6 +27,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     const currWindowInput = document.getElementById(currWindowId);
     if (Number(value) >= 1 && Number(value) <= 15) {
       setWallsAreas({ ...wallsAreas, [id]: Number(value) });
+      console.log(currWindowInput);
       spanEl.innerText = '';
       currWindowInput.style.backgroundColor = '#fef6e4';
       currWindowInput.disabled = false;
@@ -38,12 +42,16 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   };
   const handleWindowChange = ({ target: { id, value } }) => {
     const inputWindow = document.getElementById(id);
+    console.log(inputWindow);
     const [wall, number, theWindowStr] = id.split('-');
     const currWallHeight = [wall, number, heightStr].join('-');
     const currWallLength = [wall, number, lengthStr].join('-');
-    // if (wallsAreas[currWallHeight]) {
-    //   inputWindow.disabled = true;
-    // } else {
+    const windowFit = Math.ceil((wallsAreas[currWallHeight] * wallsAreas[currWallLength]) / (2.4 * 2));
+    if (windowFit > 2) {
+      console.log(windowFit);
+      // inputWindow.max = windowFit;
+    }
+    // else {
     //   inputWindow.disabled = false;
     // }
   };
