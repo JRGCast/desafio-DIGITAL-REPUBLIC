@@ -4,7 +4,7 @@ import useStyles from '../styles/WallsInputStyles';
 const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) => {
   const classes = useStyles();
   const { minWallMeasures, maxWallMeasures } = wallMeasures;
-  const { handleWallChange, handleWindowChange } = handleFuncObjs;
+  const { handleWallChange, handleWindowChange, handleDoorChange,} = handleFuncObjs;
   const { allContentWrapper, cardWrapper, inputMeasures } = classes;
   const inputPropsWalls = {
     inputProps: {
@@ -57,7 +57,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
             type='number'
             placeholder='Block'
             InputProps={ inputPropsWnD }
-            onChange={ handleWindowChange }
+            onChange={ handleDoorChange }
           /> porta(s)
         </div>
       </div >

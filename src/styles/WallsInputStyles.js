@@ -52,6 +52,17 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.5em',
     width: '90%',
   },
+  button: {
+    backgroundColor: '#001858',
+    borderRadius: '40px',
+    color: 'white',
+    fontSize: '1.5em',
+    // margin: '0 auto',
+    position: 'relative',
+    left: '50%',
+    width: '100%',
+    height: '5vh',
+  }
 }));
 
 export default useStyles;

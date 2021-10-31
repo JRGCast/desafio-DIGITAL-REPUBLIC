@@ -6,6 +6,8 @@ import WallsInputGenerator from './WallsInputsGenerator';
 const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   const heightStr = 'height';
   const lengthStr = 'length';
+  const windowStr = 'window';
+  const doorStr = 'door';
   const imgWindowObj = {
     src: 'https://amgestoroutput.s3.amazonaws.com/jcmateriais/img_produtos/638265-14535830_thumb.png',
     alt: 'imagem-janela',
@@ -17,47 +19,77 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     textInfo: 'Medida da Porta: 0,80m (L) x 1,90m (A)'
   };
   const [wallsAreas, setWallsAreas] = useState({});
-  const verifyHeigthNLength = (currWHeight, currWLength) => {
-    if (wallsAreas) console.log('parei aqui');
+
+  const verifyIfWinOrDoor = (currWHeight, currWLength, currWindowId, currDoorId) => {
+    const currWindowInput = document.getElementById(currWindowId);
+    const currDoorInput = document.getElementById(currDoorId) || 0;
+    const totalWallArea = wallsAreas[currWHeight] * wallsAreas[currWLength];
+    const totalPlacefulArea = totalWallArea * 0.5;
+    const totalWindowArea = 2.4; // 1.2 (A) x 2 (L)
+    console.log(currDoorInput);
+    if (wallsAreas[currWHeight] >= 1.2 && wallsAreas[currWLength] >= 2) {
+      if (totalPlacefulArea >= totalWindowArea) {
+        let countWindows = 0;
+        let dividing = totalPlacefulArea;
+        for (let i = 0; dividing / totalWindowArea >= 1; i++) {
+          countWindows += 1;
+          dividing -= totalWindowArea;
+        }
+        console.log('d:', dividing, 'counter:', countWindows);
+        currWindowInput.max = countWindows;
+      }
+    }
+  };
+  const blockWindow = (block, fieldId) => {
+    const currWInput = document.getElementById(fieldId);
+    if (block) {
+      currWInput.disabled = true;
+      currWInput.placeholder = 'Block';
+      currWInput.value = '';
+    } else {
+      currWInput.disabled = false;
+      currWInput.placeholder = '';
+    }
   };
   const handleWallChange = ({ target: { id, value } }) => {
     const spanEl = document.getElementById(`${id}-span`);
-    const [wall, number, heightOrLength] = id.split('-');
-    const currWindowId = [wall, number, 'window'].join('-');
-    const currWindowInput = document.getElementById(currWindowId);
+    const [wall, number, _heigthOrLenght] = id.split('-');
+    const wallLengthId = [wall, number, lengthStr].join('-');
+    const wallHeightId = [wall, number, heightStr].join('-');
+    const currWindowId = [wall, number, windowStr].join('-');
+    const currDoorId = [wall, number, doorStr].join('-');
+    console.log(wall, number);
     if (Number(value) >= 1 && Number(value) <= 15) {
       setWallsAreas({ ...wallsAreas, [id]: Number(value) });
-      console.log(currWindowInput);
+      verifyIfWinOrDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
+      blockWindow(false, currWindowId);
       spanEl.innerText = '';
-      currWindowInput.style.backgroundColor = '#fef6e4';
-      currWindowInput.disabled = false;
-      currWindowInput.placeholder = '';
     } else {
       setWallsAreas({ ...wallsAreas, [id]: '' });
-      currWindowInput.disabled = true;
-      currWindowInput.value = '';
-      currWindowInput.placeholder = 'Block';
+      blockWindow(true, currWindowId);
       spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';
     }
   };
   const handleWindowChange = ({ target: { id, value } }) => {
     const inputWindow = document.getElementById(id);
-    console.log(inputWindow);
-    const [wall, number, theWindowStr] = id.split('-');
-    const currWallHeight = [wall, number, heightStr].join('-');
-    const currWallLength = [wall, number, lengthStr].join('-');
-    const windowFit = Math.ceil((wallsAreas[currWallHeight] * wallsAreas[currWallLength]) / (2.4 * 2));
-    if (windowFit > 2) {
-      console.log(windowFit);
-      // inputWindow.max = windowFit;
-    }
-    // else {
-    //   inputWindow.disabled = false;
-    // }
+    const windowTotalArea = 2.4; // 1.2 (A) * 2 (L);
+    setWallsAreas({ ...wallsAreas, [`${id}-total-area`]: Number(value * windowTotalArea) });
+    console.log(wallsAreas, windowTotalArea);
+  };
+
+  const handleDoorChange = ({ target: { id, value } }) => {
+    const inputDoor = document.getElementById(id);
+    const doorTotalArea = 1.52; // 1.9 (A) * 0.8 (L);
+    setWallsAreas({ ...wallsAreas, [`${id}-total-area`]: Number((value * doorTotalArea).toFixed(2)) });
+    console.log(wallsAreas, doorTotalArea);
+  };
+
+  const handleSubmit = () => {
+    console.log('enviou');
   };
 
   const classes = useStyles();
-  const handleFuncObjs = { handleWallChange, handleWindowChange };
+  const handleFuncObjs = { handleWallChange, handleWindowChange, handleDoorChange };
   return (
     <section className={ classes.mainWrapper }>
       <ImgGenerator imgObj={ imgWindowObj } />
@@ -66,6 +98,11 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
         wallCardsAmount={ quantityOfWalls }
         wallMeasures={ wallMeasures }
         handleFuncObjs={ handleFuncObjs } />
+      <div>
+        <button type='button'
+          className={ classes.button }
+          onClick={ handleSubmit }>CALCULAR</button>
+      </div>
     </section >);
 };
 
