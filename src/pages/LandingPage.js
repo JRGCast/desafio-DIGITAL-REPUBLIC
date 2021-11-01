@@ -18,9 +18,9 @@ const LandingPage = () => {
   const wallMeasures = { minWallMeasures: 1, maxWallMeasures: 15 };
   return (
     <div>
-      <h1 style={ {
+      <h2 style={ {
         color: theme.palette.text.primary, textAlign: 'center'
-      } }>Regras de negócio</h1>
+      } }>Regras de negócio</h2>
       <summary>
         <div style={ { width: '80%', textAlign: 'start', margin: '0 auto' } }>
           <ul style={ { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 1em' } }>{ giantString }</ul>
