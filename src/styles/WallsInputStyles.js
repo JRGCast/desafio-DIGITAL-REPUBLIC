@@ -1,5 +1,11 @@
 import { makeStyles } from '@material-ui/core';
-
+// {
+//   xs: 0,
+//   sm: 600,
+//   md: 900,
+//   lg: 1200,
+//   xl: 1536,
+// },
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
     alignItems: 'center',
@@ -13,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     padding: '1em',
     width: '50%',
+    [theme.breakpoints.down('md')]: {
+      gap: '0.8em',
+      padding: '0.5em',
+      width: '70%'
+    },
+    [theme.breakpoints.down('sm')]: {
+      gap: '0.3em',
+      width: 'fit-content'
+    }
   },
   allContentWrapper: {
     background: theme.palette.background.paper,
@@ -23,7 +38,13 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     margin: '0 auto',
     padding: '0.5em',
-    width: '90%',
+    width: '80%',
+    [theme.breakpoints.down('md')]: {
+      width: '80%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: 'fit-content',
+    }
   },
   cardWrapper: {
     alignItems: 'center',
@@ -51,6 +72,12 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     padding: '0.5em',
     width: '90%',
+    [theme.breakpoints.down('md')]: {
+      width: '60%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: 'fit-content',
+    }
   },
   button: {
     backgroundColor: '#001858',

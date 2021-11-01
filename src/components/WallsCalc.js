@@ -57,6 +57,35 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
         currWindowInput.value = '';
         currWindowInput.max = 0;
       }
+    } else {
+      currWindowInput.value = '';
+      currWindowInput.max = 0;
+    }
+  };
+
+  const verifyIfDoor = (currWHeight, currWLength, currWindowId, currDoorId) => {
+    const currDoorInput = document.getElementById(currDoorId);
+    const totalWallArea = wallsAreas[currWHeight] * wallsAreas[currWLength];
+    const currWindowTotalArea = wallsAreas[`${currWindowId}-total-area`] || 0;
+    const totalPlacefulArea = (totalWallArea * 0.5) - currWindowTotalArea;
+    const totalDoorArea = 1.5; // 1.9 (A) x 0.8 (L)
+    if (wallsAreas[currWHeight] >= 2.2 && wallsAreas[currWLength] >= 1.6) {
+      if (totalPlacefulArea >= totalDoorArea) {
+        let countDoors = 0;
+        let areaDivision = totalPlacefulArea;
+        for (let i = 0; (areaDivision / totalDoorArea) >= 1; i++) {
+          countDoors += 1;
+          areaDivision -= totalDoorArea;
+        }
+        currDoorInput.placeholder = countDoors;
+        currDoorInput.max = countDoors;
+      } else {
+        currDoorInput.value = '';
+        currDoorInput.max = 0;
+      }
+    } else {
+      currDoorInput.value = '';
+      currDoorInput.max = 0;
     }
   };
   const blockWindow = (block, fieldId) => {
@@ -81,11 +110,13 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
       setWallsAreas(previous => ({ ...previous, [id]: Number(value) }));
       blockWindow(false, currWindowId);
       verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = '';
     } else {
       setWallsAreas(previous => ({ ...previous, [id]: '' }));
       blockWindow(true, currWindowId);
       verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';
     }
   };
