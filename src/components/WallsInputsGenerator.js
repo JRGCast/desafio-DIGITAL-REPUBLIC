@@ -21,13 +21,11 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
           <InputLabel htmlFor={ `wall-${index + 1}-height` }>Altura Parede { index + 1 } :</InputLabel>
           <TextField id={ `wall-${index + 1}-height` }
             className={ inputMeasures }
-            type='text'
-            pattern='[0-9]*'
+            type='number'
             placeholder='1-15'
             InputProps={ inputPropsWalls }
             autoFocus={ true }
             onChange={ handleWallChange }
-            onKeyPress={ handleWallChange }
             required /> metros
           <span id={ `wall-${index + 1}-height-span` }></span>
         </div>
