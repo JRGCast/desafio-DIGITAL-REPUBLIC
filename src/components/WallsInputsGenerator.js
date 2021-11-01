@@ -1,4 +1,5 @@
 import { InputLabel, TextField } from "@material-ui/core";
+import PropTypes from 'prop-types';
 import useStyles from '../styles/WallsInputStyles';
 
 const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) => {
@@ -66,6 +67,19 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
     );
   });
   return (<>{ theInputs }</>);
+};
+
+WallsInputGenerator.propTypes = {
+  quantityOfWalls: PropTypes.number,
+  wallMeasures: PropTypes.shape({
+    minWallMeasures: PropTypes.number,
+    maxWallMeasures: PropTypes.number,
+  }),
+  handleFuncObjs: PropTypes.shape({
+    handleWallChange: PropTypes.func,
+    handleWindowChange: PropTypes.func,
+    handleDoorChange: PropTypes.func,
+  })
 };
 
 export default WallsInputGenerator;

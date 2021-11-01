@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import useStyles from '../styles/WallsInputStyles';
 import ImgGenerator from './ImgGenerator';
@@ -214,5 +215,14 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
         </div> }
     </>);
 };
+
+WallsCalc.propTypes = {
+  quantityOfWalls: PropTypes.number,
+  wallMeasures: PropTypes.shape({
+    minWallMeasures: PropTypes.number,
+    maxWallMeasures: PropTypes.number,
+  }),
+};
+
 
 export default WallsCalc;
