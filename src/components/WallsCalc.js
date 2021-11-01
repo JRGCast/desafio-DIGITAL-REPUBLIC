@@ -61,7 +61,6 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
           getBuckets["0,5 L"] += 1;
           divideToBucked -= 2.5;
         }
-        console.log(divideToBucked, getBuckets);
       }
       setBucketsCount(getBuckets);
     }

@@ -10,7 +10,6 @@ describe('1 - Test basic texts from components are rendered inside App', () => {
   it('Verify if App contains at least 1 header', () => {
     const allHeaders = screen.getAllByRole('heading');
     expect(allHeaders.length).toBeGreaterThan(0);
-    console.log(allHeaders);
   });
   it('Verify if AppInside text is rendered inside App', () => {
     const h1LojaTintas = screen.getByRole('heading',
