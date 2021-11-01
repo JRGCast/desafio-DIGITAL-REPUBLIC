@@ -9,8 +9,9 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   mainWrapper: {
     alignItems: 'center',
-    background: theme.palette.primary.light,
+    background: theme.palette.secondary.dark,
     border: `5px solid #001858`,
+    borderRadius: '40px',
     display: 'grid',
     flexFlow: 'row wrap',
     gap: '1em',
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   allContentWrapper: {
     background: theme.palette.background.paper,
     border: '3px solid #001858',
+    borderRadius: '10px',
     color: theme.palette.text.primary,
     display: 'flex',
     flexFlow: 'column wrap',
@@ -66,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     background: theme.palette.background.paper,
     border: '3px solid #001858',
+    borderRadius: '10px',
     color: theme.palette.text.primary,
     display: 'flex',
     flexFlow: 'column wrap',
@@ -100,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     height: '5vh',
   },
   resultWrapper: {
-    background: theme.palette.background.paper,
+    background: theme.palette.secondary.light,
     border: '3px solid #001858',
     color: theme.palette.text.primary,
     display: 'flex',
@@ -110,12 +113,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.5em',
     textAlign: 'center',
     width: 'fit-content',
-    // [theme.breakpoints.down('md')]: {
-    //   width: '50%',
-    // },
-    // [theme.breakpoints.down('sm')]: {
-    //   width: 'fit-content',
-    // }
   }
 }));
 

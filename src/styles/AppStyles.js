@@ -18,8 +18,9 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     color: theme.palette.text.secondary,
-    margin: '0 auto',
-    textAlign: 'center',
+    margin: '1em auto',
+    textAlign: 'justify',
+    textIndent: '2em',
     width: '50%'
   }
 }));
