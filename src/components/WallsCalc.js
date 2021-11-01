@@ -65,66 +65,44 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     }
   }, [finalTotal]);
 
-  const verifyIfWindow = (currWHeight, currWLength, currWindowId, currDoorId) => {
-    const currWindowInput = document.getElementById(currWindowId);
+  const verifyWorD = (WindOrDoor, currWHeight, currWLength, currWindowId, currDoorId) => {
+    const currUseId = WindOrDoor === 'window' ? currWindowId : currDoorId;
+    const currInput = document.getElementById(currUseId);
     const totalWallArea = wallsAreas[currWHeight] * wallsAreas[currWLength];
-    const currDoorTotalArea = wallsAreas[`${currDoorId}-total-area`] || 0;
-    const totalPlacefulArea = (totalWallArea * 0.5) - currDoorTotalArea;
-    const totalWindowArea = 2.4; // 1.2 (A) x 2 (L)
-    if (wallsAreas[currWHeight] >= 1.2 && wallsAreas[currWLength] >= 2) {
-      if (totalPlacefulArea >= totalWindowArea) {
+    const currOpositeTotalArea = wallsAreas[`${currUseId}-total-area`] || 0;
+    const totalPlacefulArea = (totalWallArea * 0.5) - currOpositeTotalArea;
+    const totalCurrArea = WindOrDoor === 'window' ? 2.4 /* 1.2 (A) x 2 (L) */ : 1.5; // 1.9 (A) x 0.8 (L)
+    const initCalc = WindOrDoor === 'window' ? [1.2, 2] : [2.2, 1.6];
+    if (wallsAreas[currWHeight] >= initCalc[0] && wallsAreas[currWLength] >= initCalc[1]) {
+      if (totalPlacefulArea >= totalCurrArea) {
         let countWindows = 0;
         let areaDivision = totalPlacefulArea;
-        for (let i = 0; (areaDivision / totalWindowArea) >= 1; i++) {
+        for (let i = 0; (areaDivision / totalCurrArea) >= 1; i++) {
           countWindows += 1;
-          areaDivision -= totalWindowArea;
+          areaDivision -= totalCurrArea;
         }
-        currWindowInput.placeholder = `max ${countWindows}`;
-        currWindowInput.max = countWindows;
+        currInput.placeholder = `max ${countWindows}`;
+        currInput.max = countWindows;
       } else {
-        currWindowInput.value = '';
-        currWindowInput.max = 0;
+        currInput.value = '';
+        currInput.max = 0;
       }
     } else {
-      currWindowInput.value = '';
-      currWindowInput.max = 0;
+      currInput.value = '';
+      currInput.max = 0;
+      blockField(true, currWindowId);
     }
   };
 
-  const verifyIfDoor = (currWHeight, currWLength, currWindowId, currDoorId) => {
-    const currDoorInput = document.getElementById(currDoorId);
-    const totalWallArea = wallsAreas[currWHeight] * wallsAreas[currWLength];
-    const currWindowTotalArea = wallsAreas[`${currWindowId}-total-area`] || 0;
-    const totalPlacefulArea = (totalWallArea * 0.5) - currWindowTotalArea;
-    const totalDoorArea = 1.5; // 1.9 (A) x 0.8 (L)
-    if (wallsAreas[currWHeight] >= 2.2 && wallsAreas[currWLength] >= 1.6) {
-      if (totalPlacefulArea >= totalDoorArea) {
-        let countDoors = 0;
-        let areaDivision = totalPlacefulArea;
-        for (let i = 0; (areaDivision / totalDoorArea) >= 1; i++) {
-          countDoors += 1;
-          areaDivision -= totalDoorArea;
-        }
-        currDoorInput.placeholder = `max ${countDoors}`;
-        currDoorInput.max = countDoors;
-      } else {
-        currDoorInput.value = '';
-        currDoorInput.max = 0;
-      }
-    } else {
-      currDoorInput.value = '';
-      currDoorInput.max = 0;
-    }
-  };
-  const blockWindow = (block, fieldId) => {
-    const currWInput = document.getElementById(fieldId);
+  const blockField = (block, fieldId) => {
+    const currField = document.getElementById(fieldId);
     if (block) {
-      currWInput.disabled = true;
-      currWInput.placeholder = 'Block';
-      currWInput.value = '';
+      currField.disabled = true;
+      currField.placeholder = 'Block';
+      currField.value = '';
     } else {
-      currWInput.disabled = false;
-      currWInput.placeholder = '';
+      currField.disabled = false;
+      currField.placeholder = '';
     }
   };
   const handleWallChange = ({ target: { id, value } }) => {
@@ -136,13 +114,15 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     const currDoorId = [wall, number, doorStr].join('-');
     if (Number(value) >= 1 && Number(value) <= 15) {
       setWallsAreas(previous => ({ ...previous, [id]: Number(value) }));
-      verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
-      verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyWorD('window', wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyWorD('door', wallHeightId, wallLengthId, currWindowId, currDoorId);
+      // verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = '';
     } else {
       setWallsAreas(previous => ({ ...previous, [id]: '' }));
-      verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
-      verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyWorD('window', wallHeightId, wallLengthId, currWindowId, currDoorId);
+      verifyWorD('door', wallHeightId, wallLengthId, currWindowId, currDoorId);
+      // verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';
     }
   };
