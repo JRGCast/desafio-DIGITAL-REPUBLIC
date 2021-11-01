@@ -89,6 +89,33 @@ const useStyles = makeStyles((theme) => ({
     left: '50%',
     width: '100%',
     height: '5vh',
+  },
+  redoButton: {
+    backgroundColor: '#001858',
+    borderRadius: '40px',
+    color: 'white',
+    fontSize: '1.5em',
+    margin: '0 auto',
+    width: '100%',
+    height: '5vh',
+  },
+  resultWrapper: {
+    background: theme.palette.background.paper,
+    border: '3px solid #001858',
+    color: theme.palette.text.primary,
+    display: 'flex',
+    flexFlow: 'column wrap',
+    justifyContent: 'space-between',
+    margin: '0 auto',
+    padding: '0.5em',
+    textAlign: 'center',
+    width: 'fit-content',
+    // [theme.breakpoints.down('md')]: {
+    //   width: '50%',
+    // },
+    // [theme.breakpoints.down('sm')]: {
+    //   width: 'fit-content',
+    // }
   }
 }));
 

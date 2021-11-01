@@ -9,6 +9,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   const [showCalc, setShowCalc] = useState(false);
   const [finalTotal, setFinalTotal] = useState(0);
   const [bucketsCount, setBucketsCount] = useState({ "18 L": 0, "3,6 L": 0, "2,5 L": 0, "0,5 L": 0 });
+  const classes = useStyles();
   const heightStr = 'height';
   const lengthStr = 'length';
   const windowStr = 'window';
@@ -75,6 +76,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     const initCalc = WindOrDoor === 'window' ? [1.2, 2] : [2.2, 1.6];
     if (wallsAreas[currWHeight] >= initCalc[0] && wallsAreas[currWLength] >= initCalc[1]) {
       if (totalPlacefulArea >= totalCurrArea) {
+        blockField(false, currUseId);
         let countWindows = 0;
         let areaDivision = totalPlacefulArea;
         for (let i = 0; (areaDivision / totalCurrArea) >= 1; i++) {
@@ -84,13 +86,10 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
         currInput.placeholder = `max ${countWindows}`;
         currInput.max = countWindows;
       } else {
-        currInput.value = '';
-        currInput.max = 0;
+        blockField(true, currUseId);
       }
     } else {
-      currInput.value = '';
-      currInput.max = 0;
-      blockField(true, currWindowId);
+      blockField(true, currUseId);
     }
   };
 
@@ -116,13 +115,11 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
       setWallsAreas(previous => ({ ...previous, [id]: Number(value) }));
       verifyWorD('window', wallHeightId, wallLengthId, currWindowId, currDoorId);
       verifyWorD('door', wallHeightId, wallLengthId, currWindowId, currDoorId);
-      // verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = '';
     } else {
       setWallsAreas(previous => ({ ...previous, [id]: '' }));
       verifyWorD('window', wallHeightId, wallLengthId, currWindowId, currDoorId);
       verifyWorD('door', wallHeightId, wallLengthId, currWindowId, currDoorId);
-      // verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';
     }
   };
@@ -138,11 +135,21 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
 
   const calculateBucketsNDisplay = () => {
     const displayBuckets = Object.entries(bucketsCount).map(([key, value], index) =>
-      <li key={ index }>Balde { key } : { value }</li>
+      <li key={ index }
+        style={ {
+          backgroundColor: 'white',
+          borderRadius: '40px',
+          color: '#001858',
+          fontWeight: '500',
+          listStyle: 'none',
+          margin: '0.5em',
+        } }
+      >Balde { key } : { value }</li>
     );
     return (
       <>
-        <h3> Área total das { quantityOfWalls } paredes: { finalTotal }m²</h3>
+        <h3 style={ { margin: '0.5em auto' } }> Área total das { quantityOfWalls } paredes: { finalTotal }m²</h3>
+        <h4 style={ { margin: '0.5em auto' } }>Necessário:</h4>
         { displayBuckets }
       </>
     );
@@ -155,9 +162,30 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
       theFinalTotal += totalAreas[key];
     }
     setFinalTotal(theFinalTotal.toFixed(2));
+    setTimeout(() => {
+      const resultTitle = document.getElementById('title-Results');
+      resultTitle.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
-  const classes = useStyles();
+  const handleRedo = () => {
+    setShowCalc(false);
+    setBucketsCount({ "18 L": 0, "3,6 L": 0, "2,5 L": 0, "0,5 L": 0 });
+    setFinalTotal(0);
+    setTotalAreas({});
+    setWallsAreas({});
+    for (let i = 1; i <= quantityOfWalls; i++) {
+      document.getElementById(`wall-${i}-height`).value = '';
+      document.getElementById(`wall-${i}-length`).value = '';
+      document.getElementById(`wall-${i}-window`).value = '';
+      document.getElementById(`wall-${i}-door`).value = '';
+      blockField(true, `wall-${i}-window`);
+      blockField(true, `wall-${i}-door`);
+    }
+    const firstInput = document.getElementById('wall-1-height');
+    firstInput.focus();
+  };
+
   const handleFuncObjs = { handleWallChange, handleWindowChange, handleDoorChange };
   return (
     <>
@@ -175,11 +203,14 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
         </div>
       </section >
       { !showCalc ? '' :
-        <div className={ classes.mainWrapper }>
-          <ul>
+        <div className={ classes.resultWrapper }>
+          <h1 id='title-Results'>Resultados</h1>
+          <ul style={ { padding: '0', margin: '0 auto' } }>
             { calculateBucketsNDisplay() }
           </ul>
-          <button type='button' onClick={ () => setShowCalc(false) }>Voltar</button>
+          <button type='button'
+            className={ classes.redoButton }
+            onClick={ handleRedo }>Refazer?</button>
         </div> }
     </>);
 };

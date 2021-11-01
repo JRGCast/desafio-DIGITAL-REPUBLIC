@@ -24,7 +24,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
             type='number'
             placeholder='1-15'
             InputProps={ inputPropsWalls }
-            autoFocus={ true }
+            autoFocus={ index < 1 ? true : false }
             onChange={ handleWallChange }
             onKeyUp={ handleWallChange }
             required /> metros
