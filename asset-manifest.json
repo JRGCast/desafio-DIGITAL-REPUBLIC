@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css",
-    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.443a19ac.chunk.js",
-    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.443a19ac.chunk.js.map",
+    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.15b989f6.chunk.js",
+    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.15b989f6.chunk.js.map",
     "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.a60379d5.js",
     "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.a60379d5.js.map",
-    "static/js/2.127d4d0c.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.127d4d0c.chunk.js",
-    "static/js/2.127d4d0c.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.127d4d0c.chunk.js.map",
+    "static/js/2.9d3de550.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.9d3de550.chunk.js",
+    "static/js/2.9d3de550.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/2.9d3de550.chunk.js.map",
     "static/js/3.dd20d481.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/3.dd20d481.chunk.js",
     "static/js/3.dd20d481.chunk.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/3.dd20d481.chunk.js.map",
     "index.html": "/desafio-DIGITAL-REPUBLIC/index.html",
     "static/css/main.f09a1402.chunk.css.map": "/desafio-DIGITAL-REPUBLIC/static/css/main.f09a1402.chunk.css.map",
-    "static/js/2.127d4d0c.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.127d4d0c.chunk.js.LICENSE.txt"
+    "static/js/2.9d3de550.chunk.js.LICENSE.txt": "/desafio-DIGITAL-REPUBLIC/static/js/2.9d3de550.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a60379d5.js",
-    "static/js/2.127d4d0c.chunk.js",
+    "static/js/2.9d3de550.chunk.js",
     "static/css/main.f09a1402.chunk.css",
-    "static/js/main.443a19ac.chunk.js"
+    "static/js/main.15b989f6.chunk.js"
   ]
 }
