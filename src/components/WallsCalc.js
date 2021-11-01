@@ -8,6 +8,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   const [totalAreas, setTotalAreas] = useState({});
   const [showCalc, setShowCalc] = useState(false);
   const [finalTotal, setFinalTotal] = useState(0);
+  const [bucketsCount, setBucketsCount] = useState({ bucket18: 0, bucket3_6: 0, bucket2_5: 0, bucket0_5: 0 });
   const heightStr = 'height';
   const lengthStr = 'length';
   const windowStr = 'window';
@@ -36,6 +37,33 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
       setTheTotalArea(i);
     }
   }, [wallsAreas, quantityOfWalls]);
+
+  useEffect(() => {
+    if (finalTotal) {
+      let divideToBucked = Number(finalTotal);
+      let getBuckets = { bucket18: 0, bucket3_6: 0, bucket2_5: 0, bucket0_5: 0 };
+      while (divideToBucked > 0) {
+        if (divideToBucked >= 90) {
+          getBuckets.bucket18 += 1;
+          divideToBucked -= 90;
+        }
+        if (divideToBucked < 90 && divideToBucked >= 18) {
+          getBuckets.bucket3_6 += 1;
+          divideToBucked -= 18;
+        }
+        if (divideToBucked < 18 && divideToBucked >= 12.5) {
+          getBuckets.bucket2_5 += 1;
+          divideToBucked -= 12.5;
+        }
+        if (divideToBucked < 12.5 && divideToBucked > 0) {
+          getBuckets.bucket0_5 += 1;
+          divideToBucked -= 2.5;
+        }
+        console.log(divideToBucked, getBuckets);
+      }
+      setBucketsCount(getBuckets);
+    }
+  }, [finalTotal]);
 
   const verifyIfWindow = (currWHeight, currWLength, currWindowId, currDoorId) => {
     const currWindowInput = document.getElementById(currWindowId);
@@ -130,37 +158,52 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     setWallsAreas(previous => ({ ...previous, [`${id}-total-area`]: Number((value * doorTotalArea).toFixed(2)) }));
   };
 
+  const calculateBucketsNDisplay = () => {
+    const displayBuckets = Object.entries(bucketsCount).map(([key, value], index) =>
+      <li key={ index }>{ key }: { value }</li>
+    );
+    return (
+      <>
+        <h3> Área total das { quantityOfWalls } paredes: { finalTotal }m²</h3>
+        { displayBuckets }
+      </>
+    );
+  };
+
   const handleSubmit = () => {
     setShowCalc(true);
-    let finalTotal = 0;
+    let theFinalTotal = 0;
     for (let key in totalAreas) {
-      finalTotal += totalAreas[key];
+      theFinalTotal += totalAreas[key];
     }
-    setFinalTotal(finalTotal.toFixed(2));
+    setFinalTotal(theFinalTotal.toFixed(2));
   };
 
   const classes = useStyles();
   const handleFuncObjs = { handleWallChange, handleWindowChange, handleDoorChange };
-  return (<>
-    <section className={ classes.mainWrapper }>
-      <ImgGenerator imgObj={ imgWindowObj } />
-      <ImgGenerator imgObj={ imgDoorObj } />
-      <WallsInputGenerator
-        wallCardsAmount={ quantityOfWalls }
-        wallMeasures={ wallMeasures }
-        handleFuncObjs={ handleFuncObjs } />
-      <div>
-        <button type='button'
-          className={ classes.button }
-          onClick={ handleSubmit }>CALCULAR</button>
-      </div>
-    </section >
-    { !showCalc ? '' :
-      <div className={ classes.mainWrapper }>
-        <h3> Área total das { quantityOfWalls } paredes: { finalTotal }m²</h3>
-        <button type='button' onClick={ () => setShowCalc(false) }>Voltar</button>
-      </div> }
-  </>);
+  return (
+    <>
+      <section className={ classes.mainWrapper }>
+        <ImgGenerator imgObj={ imgWindowObj } />
+        <ImgGenerator imgObj={ imgDoorObj } />
+        <WallsInputGenerator
+          wallCardsAmount={ quantityOfWalls }
+          wallMeasures={ wallMeasures }
+          handleFuncObjs={ handleFuncObjs } />
+        <div>
+          <button type='button'
+            className={ classes.button }
+            onClick={ handleSubmit }>CALCULAR</button>
+        </div>
+      </section >
+      { !showCalc ? '' :
+        <div className={ classes.mainWrapper }>
+          <ul>
+            { calculateBucketsNDisplay() }
+          </ul>
+          <button type='button' onClick={ () => setShowCalc(false) }>Voltar</button>
+        </div> }
+    </>);
 };
 
 export default WallsCalc;

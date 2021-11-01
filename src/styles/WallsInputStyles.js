@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     padding: '1em',
     width: '50%',
+    height: '80%',
     [theme.breakpoints.down('md')]: {
       gap: '0.8em',
       padding: '0.5em',
