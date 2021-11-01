@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/desafio-DIGITAL-REPUBLIC/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.1f60db5d.chunk.js",
-    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.1f60db5d.chunk.js.map",
+    "main.js": "/desafio-DIGITAL-REPUBLIC/static/js/main.e69fde11.chunk.js",
+    "main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/main.e69fde11.chunk.js.map",
     "runtime-main.js": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.33deb4bf.js",
     "runtime-main.js.map": "/desafio-DIGITAL-REPUBLIC/static/js/runtime-main.33deb4bf.js.map",
     "static/js/2.c1f0d1c6.chunk.js": "/desafio-DIGITAL-REPUBLIC/static/js/2.c1f0d1c6.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.33deb4bf.js",
     "static/js/2.c1f0d1c6.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.1f60db5d.chunk.js"
+    "static/js/main.e69fde11.chunk.js"
   ]
 }
