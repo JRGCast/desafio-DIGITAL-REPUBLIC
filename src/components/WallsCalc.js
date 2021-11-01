@@ -8,7 +8,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   const [totalAreas, setTotalAreas] = useState({});
   const [showCalc, setShowCalc] = useState(false);
   const [finalTotal, setFinalTotal] = useState(0);
-  const [bucketsCount, setBucketsCount] = useState({ bucket18: 0, bucket3_6: 0, bucket2_5: 0, bucket0_5: 0 });
+  const [bucketsCount, setBucketsCount] = useState({ "18 L": 0, "3,6 L": 0, "2,5 L": 0, "0,5 L": 0 });
   const heightStr = 'height';
   const lengthStr = 'length';
   const windowStr = 'window';
@@ -41,22 +41,22 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
   useEffect(() => {
     if (finalTotal) {
       let divideToBucked = Number(finalTotal);
-      let getBuckets = { bucket18: 0, bucket3_6: 0, bucket2_5: 0, bucket0_5: 0 };
+      let getBuckets = { "18 L": 0, "3,6 L": 0, "2,5 L": 0, "0,5 L": 0 };
       while (divideToBucked > 0) {
         if (divideToBucked >= 90) {
-          getBuckets.bucket18 += 1;
+          getBuckets["18 L"] += 1;
           divideToBucked -= 90;
         }
         if (divideToBucked < 90 && divideToBucked >= 18) {
-          getBuckets.bucket3_6 += 1;
+          getBuckets["3,6 L"] += 1;
           divideToBucked -= 18;
         }
         if (divideToBucked < 18 && divideToBucked >= 12.5) {
-          getBuckets.bucket2_5 += 1;
+          getBuckets["2,5 L"] += 1;
           divideToBucked -= 12.5;
         }
         if (divideToBucked < 12.5 && divideToBucked > 0) {
-          getBuckets.bucket0_5 += 1;
+          getBuckets["0,5 L"] += 1;
           divideToBucked -= 2.5;
         }
         console.log(divideToBucked, getBuckets);
@@ -160,7 +160,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
 
   const calculateBucketsNDisplay = () => {
     const displayBuckets = Object.entries(bucketsCount).map(([key, value], index) =>
-      <li key={ index }>{ key }: { value }</li>
+      <li key={ index }>Balde { key } : { value }</li>
     );
     return (
       <>
