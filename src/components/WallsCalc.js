@@ -79,7 +79,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
           countWindows += 1;
           areaDivision -= totalWindowArea;
         }
-        currWindowInput.placeholder = countWindows;
+        currWindowInput.placeholder = `max ${countWindows}`;
         currWindowInput.max = countWindows;
       } else {
         currWindowInput.value = '';
@@ -105,7 +105,7 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
           countDoors += 1;
           areaDivision -= totalDoorArea;
         }
-        currDoorInput.placeholder = countDoors;
+        currDoorInput.placeholder = `max ${countDoors}`;
         currDoorInput.max = countDoors;
       } else {
         currDoorInput.value = '';
@@ -136,13 +136,11 @@ const WallsCalc = ({ quantityOfWalls, wallMeasures }) => {
     const currDoorId = [wall, number, doorStr].join('-');
     if (Number(value) >= 1 && Number(value) <= 15) {
       setWallsAreas(previous => ({ ...previous, [id]: Number(value) }));
-      blockWindow(false, currWindowId);
       verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
       verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = '';
     } else {
       setWallsAreas(previous => ({ ...previous, [id]: '' }));
-      blockWindow(true, currWindowId);
       verifyIfWindow(wallHeightId, wallLengthId, currWindowId, currDoorId);
       verifyIfDoor(wallHeightId, wallLengthId, currWindowId, currDoorId);
       spanEl.innerText = value === '' ? 'Preencha este campo' : 'Valor incorreto ❌';

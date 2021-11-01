@@ -26,6 +26,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
             InputProps={ inputPropsWalls }
             autoFocus={ true }
             onChange={ handleWallChange }
+            onKeyUp={ handleWallChange }
             required /> metros
           <span id={ `wall-${index + 1}-height-span` }></span>
         </div>
@@ -37,6 +38,7 @@ const WallsInputGenerator = ({ wallCardsAmount, wallMeasures, handleFuncObjs }) 
             placeholder='1-15'
             InputProps={ inputPropsWalls }
             onChange={ handleWallChange }
+            onKeyUp={ handleWallChange }
             required /> metros
           <span id={ `wall-${index + 1}-length-span` }></span>
         </div>
