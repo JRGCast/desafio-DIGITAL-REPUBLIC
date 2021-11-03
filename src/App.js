@@ -7,20 +7,20 @@ const Routes = lazy(() => import('./Routes/Routes'));
 
 const App = () => {
   return (
-    <Suspense fallback={ <LinearProgress /> }>
-      <ThemeProvider theme={ theme }>
-        <div style={
-          {
-            background: theme.palette.background.default,
-            height: '100%',
-            width: '100%'
-          }
-        }>
-          <AppInside />
+    <ThemeProvider theme={ theme }>
+      <div style={
+        {
+          background: theme.palette.background.default,
+          height: '100%',
+          width: '100%'
+        }
+      }>
+        <AppInside />
+        <Suspense fallback={ <LinearProgress /> }>
           <Routes />
-        </div>
-      </ThemeProvider >
-    </Suspense>
+        </Suspense>
+      </div>
+    </ThemeProvider >
   );
 };
 

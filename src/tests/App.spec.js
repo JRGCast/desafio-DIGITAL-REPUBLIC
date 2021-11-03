@@ -1,11 +1,12 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import App from '../App';
+import renderWithRouter from './helper/renderWithRouter';
 
 describe('1 - Test basic texts from components are rendered inside App', () => {
   beforeEach(() => {
-    render(<App />);
+    renderWithRouter(<App />);
   });
   it('Verify if App contains at least 1 header', () => {
     const allHeaders = screen.getAllByRole('heading');
