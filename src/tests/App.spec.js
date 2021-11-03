@@ -1,10 +1,12 @@
+import { LinearProgress } from '@material-ui/core';
 import '@testing-library/jest-dom';
-import { screen } from '@testing-library/react';
-import React from 'react';
+import { screen, waitFor } from '@testing-library/react';
+import React, { Suspense } from 'react';
 import App from '../App';
+import LandingPage from '../pages/LandingPage';
 import renderWithRouter from './helper/renderWithRouter';
 
-describe('1 - Test basic texts from components are rendered inside App', () => {
+describe('1 - Tests if basic texts from components are rendered inside App before routes', () => {
   beforeEach(() => {
     renderWithRouter(<App />);
   });
@@ -23,3 +25,16 @@ describe('1 - Test basic texts from components are rendered inside App', () => {
     expect(h1LojaTintas && par1).toBeInTheDocument();
   });
 });
+
+// describe('2 - Test if basic texts from routed components are rendered inside App', () => {
+//   renderWithRouter(
+//     <App>
+//       <Suspense fallback={ <LinearProgress /> }>
+//         <LandingPage />
+//       </Suspense>
+//     </App>);
+//   it('Verify if first route is rendered after suspense resolve', async () => {
+//     const rulesTitle = screen.getByRole('heading', { level: 1 });
+//     await waitFor(() => expect(rulesTitle).toBeInTheDocument());
+//   });
+// });
