@@ -1,10 +1,9 @@
-import { LinearProgress } from '@material-ui/core';
 import '@testing-library/jest-dom';
 import { screen, waitFor } from '@testing-library/react';
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import App from '../App';
-import LandingPage from '../pages/LandingPage';
 import renderWithRouter from './helper/renderWithRouter';
+const LandingPage = lazy(() => import('../pages/LandingPage'));
 
 describe('1 - Tests if basic texts from components are rendered inside App before routes', () => {
   beforeEach(() => {
@@ -29,7 +28,7 @@ describe('1 - Tests if basic texts from components are rendered inside App befor
 // describe('2 - Test if basic texts from routed components are rendered inside App', () => {
 //   renderWithRouter(
 //     <App>
-//       <Suspense fallback={ <LinearProgress /> }>
+//       <Suspense fallback={ null }>
 //         <LandingPage />
 //       </Suspense>
 //     </App>);
